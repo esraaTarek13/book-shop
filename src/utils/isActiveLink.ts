@@ -1,0 +1,1 @@
+export const isActiveLink = (pathname: string, href: string) => pathname === href;

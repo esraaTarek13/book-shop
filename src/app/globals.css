@@ -1,26 +1,122 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Primary color */
+  --color-primary: #d9176c;
+  --color-primary-10: #d9176c1a;
+  --color-primary-50: #d9176c80;
+
+  /* Backgrounds */
+  --color-background: #f5f5f5;
+  --color-navbar: #ffffff33;
+  --color-footer: #3b2f4a;
+  --color-surface: #ffffff;
+
+  /* Cards */
+  --color-card: #3b2f4a;    
+  --color-card-10: #3b2f4a1a;             
+  --color-card-border: #22222233;
+
+  /* Text */
+  --color-text: #222222;
+  --color-text-50: #22222280;
+  --color-text-light: #ffffff;
+  --color-text-light-50: #ffffff80;
+  --color-text-accent: #d9176c;
+  --color-text-success: #25d994;
+  --color-text-warning: #eaa451;
+  --color-danger: #e5484d;
+
+  /* States / status */
+  --color-progress: #acacac;
+
+  /* Border radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  outline: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    background-color: var(--color-background);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+::selection {
+  background-color: var(--color-primary-50);
+  color: var(--color-text);
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-primary-10);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary);
+  border-radius: var(--radius-full);
+}
+
+/* Override browser autofill background to match input theme */
+@layer utilities {
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px var(--color-surface) inset !important;
+    -webkit-text-fill-color: var(--color-text) !important;
+  }
+
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+}
+
+/* Bootstrap-style responsive container */
+.custom-container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 576px) {
+  .custom-container {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .custom-container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .custom-container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .custom-container {
+    max-width: 1140px;
+  }
+}
+@media (min-width: 1400px) {
+  .custom-container {
+    max-width: 1320px;
+  }
 }
