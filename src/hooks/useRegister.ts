@@ -5,7 +5,7 @@ import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import type { AxiosError } from "axios";
 import { registerApi } from "@/api/authApi";
-import { ApiErrorResponse } from "@/types/auth";
+import { ApiErrorResponse } from "@/types/api";
 
 export const useRegister = () => {
   const router = useRouter();

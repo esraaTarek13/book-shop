@@ -1,6 +1,5 @@
+import AboutTemplate from "@/components/templates/AboutTemplate";
 
-export default function page() {
-  return (
-    <div>page</div>
-  )
+export default function AboutPage() {
+  return <AboutTemplate />;
 }

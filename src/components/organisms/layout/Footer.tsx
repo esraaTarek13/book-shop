@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="custom-container space-y-4">
         <div className="flex flex-col md:flex-row justify-between gap-6 md:items-center">
           <div className="flex flex-col sm:flex-row sm:items-center gap-5 lg:gap-10">
-            <Logo />
+            <Logo width={100} />
             <NavLinks />
           </div>
           <SocialLinks />

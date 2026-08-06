@@ -38,10 +38,6 @@ export interface ResetPasswordValues {
   password_confirmation: string;
 }
 
-export interface ApiErrorResponse {
-  message: string;
-}
-
 export interface ResetPasswordState {
   email: string;
   otp: string;

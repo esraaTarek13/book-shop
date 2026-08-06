@@ -1,5 +1,6 @@
 import BackgroundBanner from "../atoms/BackgroundBanner";
 import SearchBar from "../molecules/SearchBar";
+import FeaturesBar from "../organisms/FeaturesBar";
 
 export default function HomeTemplate() {
   return (
@@ -7,6 +8,8 @@ export default function HomeTemplate() {
       <BackgroundBanner height="h-[80vh]">
         <SearchBar />
       </BackgroundBanner>
+
+      <FeaturesBar />
     </>
   );
 }

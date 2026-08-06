@@ -1,12 +1,13 @@
 import type { ElementType, HTMLAttributes, ReactNode } from "react";
 
 type TextWeight = "normal" | "medium" | "semibold" | "bold";
-type TextSize = "xs" | "sm" | "base" | "lg" | "xl" | "2xl" | "3xl";
+type TextSize = "xs" | "sm" | "base" | "lg" | "xl" | "2xl" | "4xl";
 type TextColor =
   | "default"
   | "muted"
   | "accent"
   | "light"
+  | "lightMuted"
   | "success"
   | "warning";
 
@@ -31,8 +32,8 @@ const sizeStyles: Record<TextSize, string> = {
   base: "text-sm md:text-base",
   lg: "text-base md:text-lg",
   xl: "text-lg md:text-xl",
-  "2xl": "text-2xl",
-  "3xl": "text-3xl",
+  "2xl": "text-lg md:text-xl lg:text-2xl",
+  "4xl": "text-2xl md:text-3xl lg:text-4xl",
 };
 
 const colorStyles: Record<TextColor, string> = {
@@ -40,6 +41,7 @@ const colorStyles: Record<TextColor, string> = {
   muted: "text-text-50",
   accent: "text-text-accent",
   light: "text-text-light",
+  lightMuted: "text-text-light-50",
   success: "text-text-success",
   warning: "text-text-warning",
 };

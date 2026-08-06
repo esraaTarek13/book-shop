@@ -6,7 +6,7 @@ import { toast } from "sonner";
 import type { AxiosError } from "axios";
 import { loginApi } from "@/api/authApi";
 import { useAuthStore } from "@/store/authStore";
-import { ApiErrorResponse } from "@/types/auth";
+import { ApiErrorResponse } from "@/types/api";
 
 export const useLogin = () => {
     const router = useRouter();

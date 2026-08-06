@@ -4,7 +4,7 @@ import TextLink from "../atoms/TextLink";
 import { LINKS } from "@/constants/navLinks";
 import { isActiveLink } from "@/utils/isActiveLink";
 
-export default function NavLinks({className}: {className?: string}) {
+export default function NavLinks({ className }: { className?: string }) {
   const pathname = usePathname();
 
   return (
@@ -17,7 +17,7 @@ export default function NavLinks({className}: {className?: string}) {
             isActiveLink(pathname, link.href)
               ? "text-text-warning"
               : "text-text-light hover:text-text-warning"
-          }`}
+          } `}
         >
           {link.name}
         </TextLink>

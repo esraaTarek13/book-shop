@@ -21,6 +21,8 @@ interface FormFieldProps {
   placeholder?: string;
   className?: string;
   rows?: number;
+  srOnly?: string;
+  inputStyle?: string;
 }
 
 /**
@@ -34,19 +36,24 @@ export default function FormField({
   placeholder = "",
   className = "",
   rows,
+  srOnly,
+  inputStyle,
 }: FormFieldProps) {
   const [field, meta] = useField(name);
   const hasError = Boolean(meta.touched && meta.error);
 
   return (
     <div className={`flex flex-col gap-1 md:gap-2 ${className}`}>
-      <Label htmlFor={name}>{label}</Label>
+      <Label htmlFor={name} className={srOnly}>
+        {label}
+      </Label>
 
       {type === "textarea" ? (
         <Textarea
           id={name}
           placeholder={placeholder}
           hasError={hasError}
+          className={inputStyle}
           rows={rows}
           {...field}
         />
@@ -63,6 +70,7 @@ export default function FormField({
           type={type}
           placeholder={placeholder}
           hasError={hasError}
+          className={inputStyle}
           {...field}
         />
       )}

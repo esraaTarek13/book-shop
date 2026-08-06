@@ -5,7 +5,7 @@ import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import type { AxiosError } from "axios";
 import { resetPasswordApi } from "@/api/authApi";
-import { ApiErrorResponse } from "@/types/auth";
+import { ApiErrorResponse } from "@/types/api";
 
 export const useResetPassword = () => {
     const router = useRouter();
