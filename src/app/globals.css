@@ -13,8 +13,8 @@
   --color-surface: #ffffff;
 
   /* Cards */
-  --color-card: #3b2f4a;    
-  --color-card-10: #3b2f4a1a;             
+  --color-card: #3b2f4a;
+  --color-card-10: #3b2f4a1a;
   --color-card-border: #22222233;
 
   /* Text */
@@ -44,6 +44,9 @@
 @layer base {
   body {
     background-color: var(--color-background);
+  }
+  button {
+    -webkit-tap-highlight-color: transparent;
   }
 }
 

@@ -7,6 +7,7 @@ interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   icon: ReactNode;
   variant?: IconButtonVariant;
   "aria-label": string;
+  label?: string;
 }
 
 const variantStyles: Record<IconButtonVariant, string> = {
@@ -16,12 +17,13 @@ const variantStyles: Record<IconButtonVariant, string> = {
 };
 
 const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
-  ({ icon, variant = "ghost", className = "", ...rest }, ref) => {
+  ({ icon, variant = "ghost", disabled, className = "", ...rest }, ref) => {
     return (
       <button
         ref={ref}
         type="button"
-        className={`w-fit h-fit flex items-center justify-center rounded-sm p-2 md:p-3 transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer ${variantStyles[variant]} ${className}`}
+        disabled={disabled}
+        className={`w-fit h-auto flex items-center justify-center rounded-sm px-2 md:px-3 transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer ${variantStyles[variant]} ${className}`}
         {...rest}
       >
         {icon}

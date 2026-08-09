@@ -18,7 +18,7 @@ const variantStyles: Record<ButtonVariant, string> = {
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
-  sm: "px-3 py-1 md:px-4 md:py-2 text-xs md:text-sm",
+  sm: "px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm",
   md: "px-4 py-2 md:px-5 md:py-2.5 text-sm md:text-base",
   lg: "px-6 py-2 md:px-8 md:py-3 text-base md:text-lg",
 };
@@ -42,10 +42,10 @@ export default function Button({
     <button
       disabled={disabled || isLoading}
       aria-busy={isLoading}
-      className={`group inline-flex w-full items-center justify-center gap-3 rounded-sm font-semibold transition-all duration-300 disabled:opacity-85 disabled:cursor-not-allowed cursor-pointer ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
+      className={`group flex w-full items-center justify-center gap-3 rounded-sm font-semibold transition-all duration-300 disabled:opacity-85 disabled:cursor-not-allowed cursor-pointer ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
       {...rest}
     >
-      <span className="font-bold">{children}</span>
+      <span className="font-bold flex gap-2 items-center">{children}</span>
       {isLoading && <Spinner size={spinnerSizeMap[size]} color="current" />}
     </button>
   );

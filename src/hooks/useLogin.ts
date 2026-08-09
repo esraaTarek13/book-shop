@@ -4,7 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import type { AxiosError } from "axios";
-import { loginApi } from "@/api/authApi";
+import { loginApi } from "@/api/auth";
 import { useAuthStore } from "@/store/authStore";
 import { ApiErrorResponse } from "@/types/api";
 

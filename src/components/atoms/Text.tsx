@@ -1,15 +1,5 @@
+import { TextColor, TextSize, TextWeight } from "@/types/text";
 import type { ElementType, HTMLAttributes, ReactNode } from "react";
-
-type TextWeight = "normal" | "medium" | "semibold" | "bold";
-type TextSize = "xs" | "sm" | "base" | "lg" | "xl" | "2xl" | "4xl";
-type TextColor =
-  | "default"
-  | "muted"
-  | "accent"
-  | "light"
-  | "lightMuted"
-  | "success"
-  | "warning";
 
 interface TextProps extends HTMLAttributes<HTMLElement> {
   children: ReactNode;
@@ -29,9 +19,9 @@ const weightStyles: Record<TextWeight, string> = {
 const sizeStyles: Record<TextSize, string> = {
   xs: "text-xs",
   sm: "text-xs md:text-sm",
-  base: "text-sm md:text-base",
-  lg: "text-base md:text-lg",
-  xl: "text-lg md:text-xl",
+  base: "text-xs md:text-sm lg:text-base",
+  lg: "text-sm md:text-base lg:text-lg",
+  xl: "text-base md:text-lg lg:text-xl",
   "2xl": "text-lg md:text-xl lg:text-2xl",
   "4xl": "text-2xl md:text-3xl lg:text-4xl",
 };
@@ -44,6 +34,7 @@ const colorStyles: Record<TextColor, string> = {
   lightMuted: "text-text-light-50",
   success: "text-text-success",
   warning: "text-text-warning",
+  danger: "text-danger",
 };
 
 export default function Text({

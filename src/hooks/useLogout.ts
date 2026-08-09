@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { logoutApi } from "@/api/authApi";
+import { logoutApi } from "@/api/auth";
 import { useAuthStore } from "@/store/authStore";
 
 export const useLogout = () => {

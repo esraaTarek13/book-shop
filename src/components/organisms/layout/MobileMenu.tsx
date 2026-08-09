@@ -17,7 +17,7 @@ export default function MobileMenu({ user }: MobileMenuProps) {
   const hasHydrated = useAuthStore((state) => state.hasHydrated);
 
   return (
-    <div className="block md:hidden">
+    <section className="block md:hidden">
       <DropdownMenu.Root>
         <DropdownMenu.Trigger asChild>
           <IconButton
@@ -66,6 +66,6 @@ export default function MobileMenu({ user }: MobileMenuProps) {
           </DropdownMenu.Content>
         </DropdownMenu.Portal>
       </DropdownMenu.Root>
-    </div>
+    </section>
   );
 }

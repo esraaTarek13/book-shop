@@ -42,7 +42,7 @@ export default function FeatureCard({
           href && (
             <TextLink
               href={href}
-              className="group/link text-text-accent flex items-center gap-1 hover:opacity-100! text-xs! md:text-sm!"
+              className="group/link text-text-accent flex items-end gap-1 hover:opacity-100! text-xs! md:text-sm!"
             >
               {linkText}
               <IoArrowForward

@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import type { AxiosError } from "axios";
-import { registerApi } from "@/api/authApi";
+import { registerApi } from "@/api/auth";
 import { ApiErrorResponse } from "@/types/api";
 
 export const useRegister = () => {

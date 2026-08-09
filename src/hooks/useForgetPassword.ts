@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import type { AxiosError } from "axios";
-import { forgetPasswordApi } from "@/api/authApi";
+import { forgetPasswordApi } from "@/api/auth";
 import type { ForgetPasswordValues } from "@/types/auth";
 import { useResetPasswordStore } from "@/store/resetPasswordStore";
 import { ApiErrorResponse } from "@/types/api";
