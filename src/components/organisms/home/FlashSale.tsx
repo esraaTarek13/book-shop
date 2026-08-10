@@ -9,7 +9,6 @@ interface FlashSaleProps {
   books: HomeBook[];
   isPending?: boolean;
   isError?: boolean;
-  onAddToCart?: (bookId: number) => void;
   className?: string;
 }
 

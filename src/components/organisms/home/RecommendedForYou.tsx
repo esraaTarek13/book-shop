@@ -8,8 +8,6 @@ interface RecommendedForYouProps {
   books: HomeBook[];
   isPending?: boolean;
   isError?: boolean;
-  onAddToCart?: (bookId: number) => void;
-  onToggleWishlist?: (bookId: number) => void;
   className?: string;
 }
 
@@ -33,25 +31,25 @@ export default function RecommendedForYou({
         Recomended For You
       </Text>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {isPending ? (
-          <BookCardSkeleton />
-        ) : books.length === 0 ? (
-          <StatusMessage
-            variant="empty"
-            content="No recommendations available right now."
-          />
-        ) : (
-          books.map((book) => (
+      {isPending ? (
+        <BookCardSkeleton />
+      ) : books.length === 0 ? (
+        <StatusMessage
+          variant="empty"
+          content="No recommendations available right now."
+        />
+      ) : (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {books.map((book) => (
             <BookCard
               key={book.bookId}
               book={book}
               author={book.author}
               className="bg-surface"
             />
-          ))
-        )}
-      </div>
+          ))}
+        </div>
+      )}
     </section>
   );
 }

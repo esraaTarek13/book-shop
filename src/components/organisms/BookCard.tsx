@@ -6,19 +6,14 @@ import BookInfoHeader from "../molecules/card/BookInfoHeader";
 import BookRating from "../molecules/card/BookRating";
 import Price from "../atoms/Price";
 import BookMetaList from "../molecules/card/BookMetaList";
-import CartActions from "../molecules/card/CartActions";
 import { getBookMetaItems } from "@/mappers/bookMetaMapper";
+import CartActions from "./CartActions";
 
 interface BookCardProps {
   book: HomeBook | BookListItem;
   discountCode?: string;
   author?: string;
   showMeta?: boolean;
-  isAddingToCart?: boolean;
-  isAddingToWishlist?: boolean;
-  isWishlisted?: boolean;
-  //   onAddToCart?: (bookId: number) => void;
-  //   onToggleWishlist?: (bookId: number) => void;
   className?: string;
 }
 
@@ -27,20 +22,20 @@ export default function BookCard({
   discountCode,
   showMeta = false,
   author,
-  isAddingToCart = false,
-  isAddingToWishlist = false,
-  isWishlisted = false,
   className = "",
 }: BookCardProps) {
   return (
     <div className={`flex flex-col md:flex-row gap-6 p-4 md:p-6 ${className}`}>
-      <Link href={`/books/${book.bookId}`} className="shrink-0 flex justify-center bg-background">
+      <Link
+        href={`/books/${book.bookId}`}
+        className="shrink-0 flex justify-center bg-background"
+      >
         <BookImage
           src={getBookCoverImage(book)}
           alt={book.bookName}
           width={179}
           height={150}
-          className="w-24 md:w-40 lg:w-44.75 h-auto aspect-3/4"
+          className="w-24 md:w-40 h-auto aspect-3/4"
         />
       </Link>
 
@@ -60,19 +55,9 @@ export default function BookCard({
           <Price amount={book.final_price} />
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between md:items-center gap-2">
-          {showMeta && <BookMetaList items={getBookMetaItems(book)} />}
+        {showMeta && <BookMetaList items={getBookMetaItems(book)} />}
 
-          <CartActions
-            label="Add To Cart"
-            isAddingToCart={isAddingToCart}
-            isAddingToWishlist={isAddingToWishlist}
-            showWishlist
-            isWishlisted={isWishlisted}
-            // onAddToCart={() => onAddToCart?.(book.bookId)}
-            // onToggleWishlist={() => onToggleWishlist?.(book.bookId)}
-          />
-        </div>
+        <CartActions showLabel bookId={book.bookId} />
       </div>
     </div>
   );

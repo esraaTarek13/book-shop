@@ -20,7 +20,7 @@ export default function BookInfoHeader({
   className,
 }: BookInfoHeaderProps) {
   return (
-    <div className={`flex items-start justify-between gap-4 ${className}`}>
+    <div className={`flex items-start justify-between gap-4 flex-wrap ${className}`}>
       <div className="space-y-0.5">
         <Text as="h4" weight="bold" size="lg" color={titleColor}>
           {title}

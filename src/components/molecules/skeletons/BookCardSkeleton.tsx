@@ -1,13 +1,21 @@
 import Skeleton from "@/components/atoms/Skeleton";
 
-export default function BookCardSkeleton({ className }: { className?: string }) {
+export default function BookCardSkeleton({
+  className,
+}: {
+  className?: string;
+}) {
   return (
-    <div className={`flex gap-3 ${className}`}>
+    <div
+      className={`w-full grid grid-cols-1 lg:grid-cols-2 gap-3 ${className}`}
+    >
       {Array.from({ length: 2 }).map((_, i) => (
         <div key={i}>
-          <div className="flex gap-4 p-4 bg-surface">
+          <div className="flex flex-col md:flex-row gap-6 p-4 md:p-6 rounded-sm bg-surface">
             {/* Cover */}
-            <Skeleton className="w-24 md:w-28 h-32 md:h-37 shrink-0" />
+            <div className="shrink-0 flex justify-center rounded-sm">
+              <Skeleton className="w-24 md:w-40 lg:w-44.75 h-30 md:h-auto shrink-0 rounded-md" />
+            </div>
 
             {/* Details */}
             <div className="flex flex-1 flex-col gap-3">
@@ -26,8 +34,8 @@ export default function BookCardSkeleton({ className }: { className?: string }) 
               </div>
 
               <div className="flex items-center gap-3">
-                <Skeleton className="h-10 flex-1 rounded-full" />
-                <Skeleton className="h-10 w-10 rounded-full" />
+                <Skeleton className="h-6 md:h-8 flex-1 rounded-full" />
+                <Skeleton className="h-6 md:h-8 w-10 rounded-full" />
               </div>
             </div>
           </div>
