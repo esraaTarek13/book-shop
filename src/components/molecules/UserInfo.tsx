@@ -11,7 +11,7 @@ interface UserInfoProps {
 export default function UserInfo({ name, email, avatarSrc }: UserInfoProps) {
   return (
     <Link href="/profile" className="flex items-center gap-3">
-      <Avatar src={avatarSrc} name={name || "User"} size={40} />
+      <Avatar src={avatarSrc} name={name || "User"} size="navbar" />
 
       <div className="flex flex-col leading-tight">
         <Text as="span" weight="bold" size="sm" color="light">

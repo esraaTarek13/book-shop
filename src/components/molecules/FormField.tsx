@@ -1,3 +1,4 @@
+// FormField.tsx
 "use client";
 
 import { useField } from "formik";
@@ -23,12 +24,9 @@ interface FormFieldProps {
   rows?: number;
   srOnly?: string;
   inputStyle?: string;
+  disabled?: boolean;
 }
 
-/**
- * Bridges Formik <-> neutral Atoms. Atoms stay Formik-agnostic.
- * meta.error covers both Yup validation AND backend errors set via setFieldError().
- */
 export default function FormField({
   name,
   label,
@@ -38,6 +36,7 @@ export default function FormField({
   rows,
   srOnly,
   inputStyle,
+  disabled = false,
 }: FormFieldProps) {
   const [field, meta] = useField(name);
   const hasError = Boolean(meta.touched && meta.error);
@@ -55,6 +54,7 @@ export default function FormField({
           hasError={hasError}
           className={inputStyle}
           rows={rows}
+          disabled={disabled}
           {...field}
         />
       ) : type === "password" ? (
@@ -62,6 +62,7 @@ export default function FormField({
           id={name}
           placeholder={placeholder}
           hasError={hasError}
+          disabled={disabled}
           {...field}
         />
       ) : (
@@ -71,6 +72,7 @@ export default function FormField({
           placeholder={placeholder}
           hasError={hasError}
           className={inputStyle}
+          disabled={disabled}
           {...field}
         />
       )}

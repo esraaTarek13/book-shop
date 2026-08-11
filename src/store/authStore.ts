@@ -18,6 +18,10 @@ export const useAuthStore = create<AuthState>()(
         set({ user });
       },
 
+      updateUser: (user) => {
+        set({ user });
+      },
+
       logout: () => {
         Cookies.remove("token");
         set({ user: null });

@@ -9,14 +9,8 @@ interface ProfileImageProps {
 
 export default function ProfileImage({ avatarSrc, name }: ProfileImageProps) {
   return (
-    <div className="relative -top-10 w-fit">
-      <Avatar
-        src={avatarSrc}
-        name={name || "User"}
-        size={120}
-        imageClassName="w-20 md:w-30"
-        className="w-10! h-20! md:h-30! md:w-30! text-xl! md:text-3xl!"
-      />
+    <div className="relative -top-8 w-fit">
+      <Avatar src={avatarSrc} name={name || "User"} size="profile" />
 
       <div className="absolute -bottom-0.5 right-1">
         <IconButton

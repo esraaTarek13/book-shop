@@ -12,6 +12,7 @@ export interface AuthState {
   user: User | null;
   hasHydrated: boolean;
   setUser: (user: User, token: string) => void;
+  updateUser: (user: User) => void;
   logout: () => void;
   setHasHydrated: (state: boolean) => void;
 }

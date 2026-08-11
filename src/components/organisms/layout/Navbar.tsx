@@ -3,7 +3,7 @@ import Logo from "@/components/atoms/Logo";
 import NavLinks from "@/components/molecules/NavLinks";
 import UserInfo from "@/components/molecules/UserInfo";
 import { useAuthStore } from "@/store/authStore";
-import { mapUserData } from "@/utils/mapUser";
+import { mapUserData } from "@/mappers/mapUser";
 import MobileMenu from "./MobileMenu";
 import NavActions from "@/components/molecules/NavActions";
 import AuthActions from "@/components/molecules/AuthActions";

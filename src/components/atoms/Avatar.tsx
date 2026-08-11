@@ -2,20 +2,30 @@
 import Image from "next/image";
 import { useState } from "react";
 
+type AvatarSize = "navbar" | "profile";
+
 interface AvatarProps {
   src?: string | null;
   name: string;
-  size?: number;
+  size?: AvatarSize;
   className?: string;
-  imageClassName?: string;
 }
+
+const sizeStyles: Record<AvatarSize, string> = {
+  navbar: "w-10 h-10 text-xs md:text-sm lg:text-base",
+  profile: "w-20 h-20 md:w-30 md:h-30 text-xl md:text-3xl",
+};
+
+const sizesAttr: Record<AvatarSize, string> = {
+  navbar: "40px",
+  profile: "(min-width: 768px) 120px, 80px",
+};
 
 export default function Avatar({
   src,
   name,
-  size = 40,
+  size = "navbar",
   className = "",
-  imageClassName = "",
 }: AvatarProps) {
   const [hasError, setHasError] = useState(false);
   const initials = name
@@ -25,13 +35,12 @@ export default function Avatar({
     .map((part) => part[0]?.toUpperCase())
     .join("");
 
-  const dimension = `${size}px`;
+  const dimensionClasses = sizeStyles[size];
 
   if (!src || hasError) {
     return (
       <div
-        style={{ width: dimension, height: dimension }}
-        className={`flex items-center justify-center rounded-full bg-card text-text-light font-semibold text-xs md:text-sm lg:text-base ${className}`}
+        className={`flex items-center justify-center rounded-full bg-card text-text-light font-semibold ${dimensionClasses} ${className}`}
       >
         {initials}
       </div>
@@ -39,13 +48,17 @@ export default function Avatar({
   }
 
   return (
-    <Image
-      src={src}
-      alt={name}
-      width={size}
-      height={size}
-      onError={() => setHasError(true)}
-      className={`rounded-full object-cover ${imageClassName}`}
-    />
+    <div
+      className={`relative rounded-full overflow-hidden ${dimensionClasses} ${className}`}
+    >
+      <Image
+        src={src}
+        alt={name}
+        fill
+        sizes={sizesAttr[size]}
+        onError={() => setHasError(true)}
+        className="object-cover"
+      />
+    </div>
   );
 }

@@ -1,26 +1,27 @@
-"use client"
+"use client";
 import { useGetProfileData } from "@/hooks/profile/useGetProfileData";
 import BackgroundBanner from "../atoms/BackgroundBanner";
-import { mapUserData } from "@/utils/mapUser";
-import ProfileImage from "../molecules/ProfileImage";
+import ProfileForm from "../organisms/profile/ProfileForm";
+import ProfileFormSkeleton from "../molecules/skeletons/ProfileFormSkeleton";
+import StatusMessage from "../atoms/StatusMessage";
 
 export default function ProfileTemplate() {
   const { data, isPending, isError } = useGetProfileData();
 
-  if (isPending) {
-    return <div>Loading...</div>;
-  }
-
-  if (isError || !data) {
-    return <div>Failed to load profile</div>;
-  }
-
-  const user = mapUserData(data);
-
   return (
     <>
       <BackgroundBanner height="h-[40vh]" />
-      <ProfileImage avatarSrc={user.image} name={user.name} />
+
+      {isPending ? (
+        <ProfileFormSkeleton />
+      ) : isError || !data ? (
+        <StatusMessage
+          content="Something went wrong while loading your profile."
+          variant="error"
+        />
+      ) : (
+        <ProfileForm profileData={data} />
+      )}
     </>
   );
 }

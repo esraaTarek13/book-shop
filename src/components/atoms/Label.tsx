@@ -11,7 +11,7 @@ export default function Label({
 }: LabelProps) {
   return (
     <label
-      className={`text-sm md:text-base lg:text-lg font-medium text-text ${className}`}
+      className={`text-sm md:text-base font-medium text-text ${className}`}
       {...rest}
     >
       {children}
