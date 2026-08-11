@@ -1,22 +1,23 @@
 import axiosInstance from "./axiosInstance"
-import type { CartMutationVariables } from "@/types/cart"
+import type { ApiResponse } from "@/types/api"
+import type { CartData, CartItem, CartMutationVariables } from "@/types/cart"
 
 export const getCartData = async () => {
-    const res = await axiosInstance.get("/cart")
+    const res = await axiosInstance.get<ApiResponse<CartData>>("/cart")
     return res.data.data
 }
 
 export const addToCart = async ({ bookId, qty }: CartMutationVariables) => {
-    const res = await axiosInstance.post(`/cart/store/${bookId}`, { qty })
+    const res = await axiosInstance.post<ApiResponse<CartItem>>(`/cart/store/${bookId}`, { qty })
     return res.data.data
 }
 
 export const updateCartData = async ({ bookId, qty }: CartMutationVariables) => {
-    const res = await axiosInstance.post(`/cart/update/${bookId}`, { qty })
+    const res = await axiosInstance.post<ApiResponse<CartItem>>(`/cart/update/${bookId}`, { qty })
     return res.data.data
 }
 
 export const deleteFromCart = async (cartId: number) => {
-    const res = await axiosInstance.delete(`/cart/destroy/${cartId}`)
-    return res.data.data
+    const res = await axiosInstance.delete<ApiResponse<never[]>>(`/cart/destroy/${cartId}`)
+    return res.data.message
 }

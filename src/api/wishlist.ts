@@ -1,26 +1,23 @@
 import axiosInstance from "./axiosInstance"
+import type { ApiResponse } from "@/types/api"
+import type { WishlistItem } from "@/types/wishlist"
 
 export const getWishlistData = async () => {
-    const res = await axiosInstance.get("/wishlist")
+    const res = await axiosInstance.get<ApiResponse<WishlistItem[]>>("/wishlist")
     return res.data.data
 }
 
 export const addToWishlist = async (bookId: number) => {
-    const res = await axiosInstance.post(`/wishlist/store/${bookId}`)
-    return res.data.data
-}
-
-export const updateWishlistData = async (bookId: number) => {
-    const res = await axiosInstance.put(`/wishlist/update/${bookId}`)
-    return res.data.data
+    const res = await axiosInstance.post<ApiResponse<never[]>>(`/wishlist/store/${bookId}`)
+    return res.data.message
 }
 
 export const deleteFromWishlist = async (bookId: number) => {
-    const res = await axiosInstance.delete(`/wishlist/destroy/${bookId}`)
-    return res.data.data
+    const res = await axiosInstance.delete<ApiResponse<never[]>>(`/wishlist/destroy/${bookId}`)
+    return res.data.message
 }
 
 export const moveAllToCart = async () => {
-    const res = await axiosInstance.post("/wishlist/move-to-cart")
-    return res.data.data
+    const res = await axiosInstance.post<ApiResponse<never[]>>("/wishlist/move-to-cart")
+    return res.data.message
 }

@@ -6,9 +6,17 @@ interface AvatarProps {
   src?: string | null;
   name: string;
   size?: number;
+  className?: string;
+  imageClassName?: string;
 }
 
-export default function Avatar({ src, name, size = 40 }: AvatarProps) {
+export default function Avatar({
+  src,
+  name,
+  size = 40,
+  className = "",
+  imageClassName = "",
+}: AvatarProps) {
   const [hasError, setHasError] = useState(false);
   const initials = name
     .trim()
@@ -23,7 +31,7 @@ export default function Avatar({ src, name, size = 40 }: AvatarProps) {
     return (
       <div
         style={{ width: dimension, height: dimension }}
-        className="flex items-center justify-center rounded-full bg-card text-text-light font-semibold text-xs md:text-sm lg:text-base"
+        className={`flex items-center justify-center rounded-full bg-card text-text-light font-semibold text-xs md:text-sm lg:text-base ${className}`}
       >
         {initials}
       </div>
@@ -37,7 +45,7 @@ export default function Avatar({ src, name, size = 40 }: AvatarProps) {
       width={size}
       height={size}
       onError={() => setHasError(true)}
-      className="rounded-full object-cover"
+      className={`rounded-full object-cover ${imageClassName}`}
     />
   );
 }

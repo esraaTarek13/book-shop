@@ -1,6 +1,5 @@
+import ProfileTemplate from "@/components/templates/ProfileTemplate";
 
 export default function page() {
-  return (
-    <div>page</div>
-  )
+  return <ProfileTemplate />;
 }

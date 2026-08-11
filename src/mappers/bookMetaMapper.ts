@@ -1,6 +1,7 @@
 import { BookListItem, HomeBook } from "@/types/book";
+import { WishlistBook } from "@/types/wishlist";
 
-export const getBookMetaItems = (book: HomeBook | BookListItem) => [
+export const getBookMetaItems = (book: HomeBook | BookListItem | WishlistBook) => [
     { label: "Author", value: book.author },
     { label: "Year", value: book.publicationYear },
 ];

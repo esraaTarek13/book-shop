@@ -14,10 +14,14 @@ export default function WishlistTemplate() {
       <BackgroundBanner height="h-[20vh]" />
 
       <section className="custom-container py-12 md:py-16 space-y-6 md:space-y-10">
-        <WishlistList items={data} isPending={isPending} isError={isError} />
+        <WishlistList
+          items={data ?? []}
+          isPending={isPending}
+          isError={isError}
+        />
 
         <div className="flex justify-center">
-          {data?.length > 0 && (
+          {(data?.length ?? 0) > 0 && (
             <Button
               variant="outline"
               size="sm"

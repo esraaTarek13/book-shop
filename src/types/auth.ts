@@ -1,9 +1,11 @@
-export interface User {
-  id: string;
-  first_name: string;
-  last_name: string;
-  email: string;
-  image?: string | null;
+import { PersonInfo } from "@/types/person";
+
+export interface User extends PersonInfo {
+  id: number;
+  email_verified_at?: string | null;
+  status?: number;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export interface AuthState {
@@ -44,4 +46,20 @@ export interface ResetPasswordState {
   setEmail: (email: string) => void;
   setOtp: (otp: string) => void;
   reset: () => void;
+}
+
+// ==== Responses ====
+
+export interface LoginResponse {
+  user: User;
+  token: string;
+}
+
+export interface RegisterResponse {
+  id: number;
+  first_name: string;
+  last_name: string;
+  email: string;
+  created_at: string;
+  updated_at: string;
 }

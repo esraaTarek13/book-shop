@@ -7,3 +7,4 @@ export interface BooksPageData {
     categories: Category[];
     pagination_links: Pagination;
 }
+

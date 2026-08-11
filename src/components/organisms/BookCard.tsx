@@ -8,9 +8,10 @@ import Price from "../atoms/Price";
 import BookMetaList from "../molecules/card/BookMetaList";
 import { getBookMetaItems } from "@/mappers/bookMetaMapper";
 import CartActions from "./CartActions";
+import { WishlistBook, WishlistItem } from "@/types/wishlist";
 
 interface BookCardProps {
-  book: HomeBook | BookListItem;
+  book: HomeBook | BookListItem | WishlistBook;
   discountCode?: string;
   author?: string;
   showMeta?: boolean;

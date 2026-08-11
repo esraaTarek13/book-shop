@@ -1,4 +1,8 @@
-import { BaseBook } from "./book";
+import type { BaseBook, BookImage } from "./book";
+
+export type CartBookDetails = Omit<BaseBook, "reviews"> & {
+  bookImage: BookImage[];
+};
 
 export interface CartItem {
   cartId: number;
@@ -8,7 +12,7 @@ export interface CartItem {
   discount: number;
   finalPrice: number;
   lineTotal: number;
-  bookDetails: Omit<BaseBook, "reviews">;
+  bookDetails: CartBookDetails;
 }
 
 export interface CartData {
@@ -16,13 +20,6 @@ export interface CartData {
   subTotal: number;
   tax: number;
   total: number;
-}
-
-export interface CartResponse {
-  data: CartData;
-  statusCode: number;
-  message: string;
-  errors: string[];
 }
 
 export interface CartMutationVariables {
