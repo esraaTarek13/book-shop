@@ -48,7 +48,7 @@ export default function PaymentSummary() {
             <LinkButton href="/checkout" className="w-full!">
               Check out
             </LinkButton>
-            <LinkButton href="/books" variant="outline" className="w-full!">
+            <LinkButton href="/books" variant="outline" className="w-full! bg-transparent!">
               Keep Shopping
             </LinkButton>
           </div>

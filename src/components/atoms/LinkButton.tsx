@@ -13,7 +13,7 @@ interface LinkButtonProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
 const variantStyles: Record<LinkButtonVariant, string> = {
   primary: "bg-primary text-text-light hover:bg-primary-50",
   outline:
-    "bg-transparent border border-primary text-text-accent hover:bg-primary-10",
+    "bg-surface border border-primary text-text-accent hover:bg-primary-10",
 };
 
 export default function LinkButton({
