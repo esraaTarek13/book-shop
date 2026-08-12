@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bookshop — User Portal
+
+Customer-facing storefront for **Bookshop**: browse books, manage cart & wishlist, checkout, and track orders.
+
+**Live Demo:** [book-shop-rgho.vercel.app](https://book-shop-rgho.vercel.app/)
+
+> This is a standalone project. The admin dashboard (`bookshop-admin`) is a **separate repository** with its own codebase, build, and deployment — the two do not share code or a build pipeline, only the same backend API.
+
+## Tech Stack
+
+- **Framework:** Next.js (App Router) + TypeScript
+- **Styling:** Tailwind CSS v4
+- **State Management:** Zustand (auth, UI state) + TanStack React Query (server state / caching)
+- **Forms:** Formik + Yup
+- **HTTP Client:** Axios
+- **Carousel:** Splide (`@splidejs/react-splide`)
+- **Notifications:** Sonner
+
+## Architecture
+
+The project follows **Atomic Design**:
+
+    components/
+      atoms/        → smallest building blocks (Button, Text, Avatar, Badge...)
+      molecules/    → small compositions of atoms (FormField, BookRating, CartActions...)
+      organisms/    → self-contained sections with their own data/logic (Navbar, BookCard, GetInTouch...)
+      templates/    → page-level layout, composes organisms, owns data fetching
+
+Key conventions:
+
+- **Forms** live in `organisms/` (not `molecules/`) — any component wrapping Formik + validation + mutation logic is treated as an organism.
+- **Templates** only orchestrate — no hardcoded content or business logic; static section content (text, constants) lives inside the organism itself, not passed down as props, unless the same organism is reused with genuinely different content.
+- **API calls** live in `api/`, wrapped by React Query hooks in `hooks/`. Components never call `axiosInstance` directly.
+- **Auth token** is stored in a cookie (not localStorage), since `proxy.ts` (middleware) needs server-side access to protect routes.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create a `.env.local` file in the project root with the required `NEXT_PUBLIC_` prefixed variables (e.g. `NEXT_PUBLIC_API_URL`).
 
-## Learn More
+## Related Projects
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Project          | Description                     |
+| ---------------- | ------------------------------- |
+| `bookshop-user`  | This repo — customer storefront |
+| `bookshop-admin` | Admin dashboard (separate repo) |
