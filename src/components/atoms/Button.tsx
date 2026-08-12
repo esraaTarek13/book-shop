@@ -1,7 +1,7 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 import Spinner from "./Spinner";
 
-type ButtonVariant = "primary" | "outline";
+type ButtonVariant = "primary" | "outline" | "dark";
 type ButtonSize = "sm" | "md" | "lg";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -15,6 +15,7 @@ const variantStyles: Record<ButtonVariant, string> = {
   primary: "bg-primary text-text-light hover:bg-primary-50",
   outline:
     "bg-transparent border border-primary text-text-accent hover:bg-primary-10",
+  dark: "bg-card text-text-light hover:bg-card/80",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {

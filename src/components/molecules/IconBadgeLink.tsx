@@ -33,7 +33,7 @@ export default function IconBadgeLink({
     >
       {icon}
       {count > 0 && (
-        <Badge variant="count" className="absolute -top-1 -right-1">
+        <Badge variant="count" className="absolute -top-1 -right-2">
           {count > 99 ? "99+" : count}
         </Badge>
       )}

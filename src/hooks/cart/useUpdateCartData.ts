@@ -14,6 +14,7 @@ export const useUpdateCartData = () => {
         mutationFn: updateCartData,
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ["cart"] });
+            queryClient.invalidateQueries({ queryKey: ["order"] });
         },
         onError: (error) => {
             const message = error.response?.data?.message || "Failed to update cart";

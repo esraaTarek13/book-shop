@@ -8,10 +8,12 @@ import MobileMenu from "./MobileMenu";
 import NavActions from "@/components/molecules/NavActions";
 import AuthActions from "@/components/molecules/AuthActions";
 import NavbarAuthSkeleton from "@/components/molecules/skeletons/NavbarAuthSkeleton";
+import { useHeaderCounts } from "@/hooks/useHeaderCounts";
 
 export default function Navbar() {
   const user = useAuthStore((state) => state.user);
   const hasHydrated = useAuthStore((state) => state.hasHydrated);
+  const { wishlistCount, cartCount } = useHeaderCounts();
 
   const mappedUser = user ? mapUserData(user) : null;
 
@@ -27,7 +29,7 @@ export default function Navbar() {
           <NavbarAuthSkeleton />
         ) : user ? (
           <div className="hidden md:flex items-center gap-4 lg:gap-6">
-            <NavActions wishlistCount={1} cartCount={3} />
+            <NavActions wishlistCount={wishlistCount} cartCount={cartCount} />
             <UserInfo
               name={mappedUser?.name}
               email={mappedUser?.email}

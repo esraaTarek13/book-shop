@@ -3,7 +3,7 @@ import { IoCheckmarkCircle, IoCloseCircle } from "react-icons/io5";
 import { LuTruck } from "react-icons/lu";
 
 interface BookAvailabilityBadgesProps {
-  inStock: boolean;
+  inStock?: boolean;
   freeShipping?: boolean;
   discountCode?: string;
   className?: string;

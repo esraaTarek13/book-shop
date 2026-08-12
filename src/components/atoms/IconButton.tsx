@@ -23,7 +23,7 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         ref={ref}
         type="button"
         disabled={disabled}
-        className={`w-fit h-auto flex items-center justify-center rounded-sm px-2 md:px-3 transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer ${variantStyles[variant]} ${className}`}
+        className={`w-fit h-auto flex items-center justify-center rounded-sm px-2 md:px-3 transition-colors disabled:opacity-50 cursor-pointer ${variantStyles[variant]} ${className}`}
         {...rest}
       >
         {icon}
