@@ -1,9 +1,15 @@
 import { IoMdSearch } from "react-icons/io";
 import Input from "../atoms/Input";
 
-export default function SearchBar() {
+interface SearchBarProps {
+  className?: string;
+}
+
+export default function SearchBar({ className = "" }: SearchBarProps) {
   return (
-    <div className="h-8 md:h-10 w-[80vw] sm:w-[40vw] flex justify-between items-center bg-surface border border-card-border rounded-full">
+    <div
+      className={`h-8 md:h-10 w-[80vw] sm:w-[40vw] flex justify-between items-center bg-surface border border-card-border rounded-full ${className}`}
+    >
       <Input
         id="search"
         placeholder="Search"

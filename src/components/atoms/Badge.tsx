@@ -10,13 +10,13 @@ interface BadgeProps {
 
 const variantStyles: Record<BadgeVariant, string> = {
   success:
-    "text-text-success text-xs md:text-sm border-text-success rounded-sm px-2 md:px-3 py-1 md:py-2",
+    "text-text-success text-xs border-text-success rounded-sm px-2 md:px-3 py-1",
   warning:
-    "text-text-warning text-xs md:text-sm border-text-warning rounded-sm px-2 md:px-3 py-1 md:py-2 bg-surface",
+    "text-text-warning text-xs border-text-warning rounded-sm px-2 md:px-3 py-1 bg-surface",
   neutral:
-    "text-progress text-xs md:text-sm border-progress rounded-sm px-2 md:px-3 py-1 md:py-2",
+    "text-progress text-xs border-progress rounded-sm px-2 md:px-3 py-1",
   primary:
-    "text-primary text-xs md:text-sm border-primary rounded-sm px-2 md:px-3 py-1 md:py-2",
+    "text-primary text-xs border-primary rounded-sm px-2 md:px-3 py-1",
   count:
     "bg-primary text-text-light border-surface min-w-4 h-4 justify-center rounded-full px-1 text-[10px]",
 };

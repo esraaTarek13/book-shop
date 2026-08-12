@@ -15,7 +15,7 @@ export default function NavActions({
   className = "",
 }: NavActionsProps) {
   return (
-    <div className={`flex items-center gap-4 lg:gap-6 ${className}`}>
+    <div className={`flex items-center gap-5 lg:gap-6 ${className}`}>
       <IconBadgeLink
         icon={<FiHeart size={20} />}
         count={wishlistCount}

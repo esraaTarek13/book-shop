@@ -28,7 +28,7 @@ export default function Navbar() {
         {!hasHydrated ? (
           <NavbarAuthSkeleton />
         ) : user ? (
-          <div className="hidden md:flex items-center gap-4 lg:gap-6">
+          <div className="hidden md:flex items-center gap-6">
             <NavActions wishlistCount={wishlistCount} cartCount={cartCount} />
             <UserInfo
               name={mappedUser?.name}
