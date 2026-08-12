@@ -1,10 +1,12 @@
 "use client";
+import { useState } from "react";
 import IconButton from "@/components/atoms/IconButton";
 import AuthActions from "@/components/molecules/AuthActions";
 import NavActions from "@/components/molecules/NavActions";
 import NavLinks from "@/components/molecules/NavLinks";
 import UserInfo from "@/components/molecules/UserInfo";
 import { useAuthStore } from "@/store/authStore";
+import { useCloseOnNavigateOrScroll } from "@/hooks/useCloseOnNavigateOrScroll";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { GiHamburgerMenu } from "react-icons/gi";
 
@@ -13,12 +15,14 @@ interface MobileMenuProps {
 }
 
 export default function MobileMenu({ user }: MobileMenuProps) {
-  // Avoid flashing wrong auth state before store hydrates from storage
   const hasHydrated = useAuthStore((state) => state.hasHydrated);
+  const [open, setOpen] = useState(false);
+
+  useCloseOnNavigateOrScroll(open, () => setOpen(false));
 
   return (
     <section className="block md:hidden">
-      <DropdownMenu.Root>
+      <DropdownMenu.Root open={open} onOpenChange={setOpen}>
         <DropdownMenu.Trigger asChild>
           <IconButton
             icon={<GiHamburgerMenu size={20} />}
@@ -31,9 +35,8 @@ export default function MobileMenu({ user }: MobileMenuProps) {
           <DropdownMenu.Content
             align="end"
             sideOffset={8}
-            className="w-56 rounded-md bg-navbar shadow-lg p-3 flex flex-col gap-2 z-50"
+            className="w-56 rounded-md bg-card/80 shadow-lg p-3 flex flex-col gap-2 z-50"
           >
-            {/* Wishlist/cart shown only when logged in */}
             {!hasHydrated
               ? null
               : user && (
@@ -48,12 +51,10 @@ export default function MobileMenu({ user }: MobileMenuProps) {
                   </>
                 )}
 
-            {/* Primary nav links, stacked for mobile */}
             <NavLinks className="flex-col!" />
 
             <DropdownMenu.Separator className="h-px bg-card my-1.5" />
 
-            {/* User info if logged in, otherwise login/signup buttons */}
             {!hasHydrated ? null : user ? (
               <UserInfo
                 name={user?.name}
