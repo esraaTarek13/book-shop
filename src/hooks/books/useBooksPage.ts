@@ -30,7 +30,7 @@ export function useBooksPage() {
         selectedCategoryIds,
         onToggleCategory: handleToggleCategory,
         totalBooksCount: data?.pagination_links.meta.total,
-        isPending: isFetching,
+        isPending: isPending || isFetching,
     };
 
     return {

@@ -1,15 +1,19 @@
 import Skeleton from "@/components/atoms/Skeleton";
 
-export default function BookCardSkeleton({
-  className,
-}: {
+interface BookCardSkeletonProps {
+  count?: number;
   className?: string;
-}) {
+}
+
+export default function BookCardSkeleton({
+  count = 2,
+  className,
+}: BookCardSkeletonProps) {
   return (
     <div
       className={`w-full grid grid-cols-1 lg:grid-cols-2 gap-3 ${className}`}
     >
-      {Array.from({ length: 2 }).map((_, i) => (
+      {Array.from({ length: count }).map((_, i) => (
         <div key={i}>
           <div className="flex flex-col md:flex-row gap-6 p-4 md:p-6 rounded-sm bg-surface">
             {/* Cover */}

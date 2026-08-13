@@ -10,6 +10,6 @@ export const getBooks = async (params?: Record<string, string | number>) => {
 };
 
 export const getBookById = async (bookId: number) => {
-    const res = await axiosInstance.get<ApiResponse<BookDetailData>>(`/book/${bookId}`);
+    const res = await axiosInstance.get<ApiResponse<BookDetailData>>(`/book/show/${bookId}`);
     return res.data.data;
 };

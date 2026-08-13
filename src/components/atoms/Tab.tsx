@@ -36,7 +36,7 @@ export default function Tab({
   return (
     <button
       type="button"
-      className={`${styles.base} ${isActive ? styles.active : styles.inactive} transition-colors ${className}`}
+      className={`cursor-pointer ${styles.base} ${isActive ? styles.active : styles.inactive} transition-colors ${className}`}
       {...rest}
     >
       {children}

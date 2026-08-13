@@ -1,6 +1,11 @@
+import CheckoutTemplate from "@/components/templates/CheckoutTemplate";
+import type { Metadata } from "next";
 
-export default function page() {
-  return (
-    <div>page</div>
-  )
+export const metadata: Metadata = {
+  title: "Checkout",
+  description: "Review your order and complete your purchase.",
+};
+
+export default function CheckoutPage() {
+  return <CheckoutTemplate />;
 }

@@ -17,7 +17,7 @@ export default function BookMetaList({
   return (
     <div className={`flex flex-wrap gap-x-4 md:gap-x-6 gap-y-2 ${className}`}>
       {items.map(({ label, value }) => (
-        <div key={label}>
+        <div key={label} >
           <Text as="p" size="sm" color="muted">
             {label}
           </Text>
