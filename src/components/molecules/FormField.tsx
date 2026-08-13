@@ -1,4 +1,3 @@
-// FormField.tsx
 "use client";
 
 import { useField } from "formik";
@@ -6,26 +5,7 @@ import Label from "../atoms/Label";
 import Input from "../atoms/Input";
 import Textarea from "../atoms/Textarea";
 import PasswordInput from "../atoms/PasswordInput";
-
-type FormFieldType =
-  | "text"
-  | "email"
-  | "tel"
-  | "number"
-  | "password"
-  | "textarea";
-
-interface FormFieldProps {
-  name: string;
-  label: string;
-  type?: FormFieldType;
-  placeholder?: string;
-  className?: string;
-  rows?: number;
-  srOnly?: string;
-  inputStyle?: string;
-  disabled?: boolean;
-}
+import { FormFieldProps } from "@/types/form";
 
 export default function FormField({
   name,
@@ -37,6 +17,7 @@ export default function FormField({
   srOnly,
   inputStyle,
   disabled = false,
+  autoComplete,
 }: FormFieldProps) {
   const [field, meta] = useField(name);
   const hasError = Boolean(meta.touched && meta.error);
@@ -55,6 +36,7 @@ export default function FormField({
           className={inputStyle}
           rows={rows}
           disabled={disabled}
+          autoComplete={autoComplete}
           {...field}
         />
       ) : type === "password" ? (
@@ -63,6 +45,7 @@ export default function FormField({
           placeholder={placeholder}
           hasError={hasError}
           disabled={disabled}
+          autoComplete={autoComplete}
           {...field}
         />
       ) : (
@@ -73,6 +56,7 @@ export default function FormField({
           hasError={hasError}
           className={inputStyle}
           disabled={disabled}
+          autoComplete={autoComplete}
           {...field}
         />
       )}
