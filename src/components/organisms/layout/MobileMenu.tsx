@@ -35,7 +35,7 @@ export default function MobileMenu({ user }: MobileMenuProps) {
           <DropdownMenu.Content
             align="end"
             sideOffset={8}
-            className="w-56 rounded-sm bg-surface border border-card-border shadow-lg p-3 flex flex-col gap-2 z-50"
+            className="w-60 rounded-sm bg-surface border border-card-border shadow-lg p-3 flex flex-col gap-2 z-50"
           >
             {!hasHydrated
               ? null

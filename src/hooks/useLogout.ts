@@ -19,6 +19,7 @@ export const useLogout = () => {
         },
         onError: () => {
             logout();
+            toast.error("Logged out, but couldn't reach the server");
             router.replace("/login");
         },
     });
