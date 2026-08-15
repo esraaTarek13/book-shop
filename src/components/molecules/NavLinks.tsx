@@ -16,7 +16,7 @@ export default function NavLinks({
   const pathname = usePathname();
 
   return (
-    <div className={`flex items-center gap-5 lg:gap-10 ${className || ""}`}>
+    <nav className={`flex items-center gap-5 lg:gap-10 ${className || ""}`}>
       {LINKS.map((link) => (
         <TextLink
           key={link.href}
@@ -30,6 +30,6 @@ export default function NavLinks({
           {link.name}
         </TextLink>
       ))}
-    </div>
+    </nav>
   );
 }

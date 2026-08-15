@@ -4,11 +4,11 @@ import IconButton from "@/components/atoms/IconButton";
 import AuthActions from "@/components/molecules/AuthActions";
 import NavActions from "@/components/molecules/NavActions";
 import NavLinks from "@/components/molecules/NavLinks";
-import UserInfo from "@/components/molecules/UserInfo";
 import { useAuthStore } from "@/store/authStore";
 import { useCloseOnNavigateOrScroll } from "@/hooks/useCloseOnNavigateOrScroll";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { GiHamburgerMenu } from "react-icons/gi";
+import UserInfo from "./UserInfo";
 
 interface MobileMenuProps {
   user: { name?: string; email?: string; image?: string | null } | null;
@@ -35,7 +35,7 @@ export default function MobileMenu({ user }: MobileMenuProps) {
           <DropdownMenu.Content
             align="end"
             sideOffset={8}
-            className="w-56 rounded-sm bg-surface shadow-lg p-3 flex flex-col gap-2 z-50"
+            className="w-56 rounded-sm bg-surface border border-card-border shadow-lg p-3 flex flex-col gap-2 z-50"
           >
             {!hasHydrated
               ? null

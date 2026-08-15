@@ -30,7 +30,7 @@ export default function AddToCartButton({
         size="sm"
         disabled={isCartPending}
         onClick={() => requireAuth(toggleCart)}
-        className={className}
+        className={`min-w-fit ${className}`}
       >
         {showLabel && (isInCart ? "Remove from Cart" : "Add to Cart")}
         {isInCart ? (
