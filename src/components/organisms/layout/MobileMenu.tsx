@@ -41,11 +41,7 @@ export default function MobileMenu({ user }: MobileMenuProps) {
               ? null
               : user && (
                   <>
-                    <NavActions
-                      wishlistCount={1}
-                      cartCount={3}
-                      className="justify-center gap-8"
-                    />
+                    <NavActions className="justify-center gap-8" />
 
                     <DropdownMenu.Separator className="h-px bg-card-border my-1.5" />
                   </>

@@ -2,18 +2,15 @@
 
 import { FiHeart, FiShoppingCart } from "react-icons/fi";
 import IconBadgeLink from "./IconBadgeLink";
+import { useHeaderCounts } from "@/hooks/useHeaderCounts";
 
 interface NavActionsProps {
-  wishlistCount?: number;
-  cartCount?: number;
   className?: string;
 }
 
-export default function NavActions({
-  wishlistCount = 0,
-  cartCount = 0,
-  className = "",
-}: NavActionsProps) {
+export default function NavActions({ className = "" }: NavActionsProps) {
+  const { wishlistCount, cartCount } = useHeaderCounts();
+
   return (
     <div className={`flex items-center gap-5 lg:gap-6 ${className}`}>
       <IconBadgeLink
