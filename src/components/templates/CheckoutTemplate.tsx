@@ -2,20 +2,24 @@
 import { Form, Formik } from "formik";
 import BackgroundBanner from "../atoms/BackgroundBanner";
 import OrderSummary from "../organisms/checkout/OrderSummary";
-import { useOrderDetails } from "@/hooks/order/useOrderDetails";
-import { useCheckoutForm } from "@/hooks/order/useCheckoutForm";
 import ShippingInformation from "../organisms/checkout/ShippingInformation";
 import NoteField from "../molecules/NoteField";
 import PaymentMethodSelector from "../organisms/checkout/PaymentMethodSelector";
+import { useCheckoutPage } from "@/hooks/order/useCheckoutPage";
 
 export default function CheckoutTemplate() {
-  const { data, isPending: isOrderPending, isError } = useOrderDetails();
   const {
+    order,
+    isOrderPending,
+    isCheckoutPending,
+    isError,
+    hasItems,
     initialValues,
     validationSchema,
     handleSubmit,
-    isPending: isCheckoutPending,
-  } = useCheckoutForm();
+  } = useCheckoutPage();
+
+  if (!isOrderPending && !hasItems) return null;
 
   return (
     <>
@@ -34,12 +38,14 @@ export default function CheckoutTemplate() {
               <NoteField />
             </div>
 
-            <OrderSummary
-              order={data}
-              isOrderPending={isOrderPending}
-              isCheckoutPending={isCheckoutPending}
-              isError={isError}
-            />
+            {hasItems && (
+              <OrderSummary
+                order={order}
+                isOrderPending={isOrderPending}
+                isCheckoutPending={isCheckoutPending}
+                isError={isError}
+              />
+            )}
           </Form>
         </Formik>
       </section>
