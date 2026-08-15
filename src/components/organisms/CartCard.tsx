@@ -7,12 +7,16 @@ import Text from "../atoms/Text";
 import QuantitySelector from "../molecules/card/QuantitySelector";
 import Price from "../atoms/Price";
 import DeleteButton from "../molecules/card/DeleteButton";
+import BookAvailabilityBadges from "../molecules/card/BookAvailabilityBadges";
 
 interface CartCardProps {
   book: CartItem;
   showAsinCode?: boolean;
   showDeleteButton?: boolean;
   description?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  imageClassName?: string;
   className?: string;
 }
 
@@ -21,12 +25,15 @@ export default function CartCard({
   description,
   showAsinCode,
   showDeleteButton = true,
+  imageWidth = 120,
+  imageHeight = 90,
+  imageClassName = "w-24 md:w-30 h-auto aspect-3/4",
   className = "",
 }: CartCardProps) {
   const bookDetails = book.bookDetails;
 
   return (
-    <div className={`bg-surface flex flex-col md:flex-row gap-6 p-4 md:p-6`}>
+    <div className={`bg-surface flex flex-col md:flex-row gap-6 p-4`}>
       <Link
         href={`/books/${book.bookId}`}
         className="shrink-0 flex justify-center bg-background"
@@ -34,9 +41,9 @@ export default function CartCard({
         <BookImage
           src={getBookCoverImage(bookDetails)}
           alt={bookDetails.bookName}
-          width={120}
-          height={90}
-          className="w-24 md:w-30 h-auto aspect-3/4"
+          width={imageWidth}
+          height={imageHeight}
+          className={imageClassName}
         />
       </Link>
 
@@ -50,6 +57,8 @@ export default function CartCard({
             description={description}
           />
         </Link>
+
+        <BookAvailabilityBadges freeShipping showStock={false} />
 
         {showAsinCode && (
           <Text

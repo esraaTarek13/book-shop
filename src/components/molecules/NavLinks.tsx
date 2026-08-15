@@ -4,7 +4,15 @@ import TextLink from "../atoms/TextLink";
 import { LINKS } from "@/constants/navLinks";
 import { isActiveLink } from "@/utils/isActiveLink";
 
-export default function NavLinks({ className }: { className?: string }) {
+interface NavLinksProps {
+  className?: string;
+  textColor?: string;
+}
+
+export default function NavLinks({
+  className,
+  textColor = "text-text-light",
+}: NavLinksProps) {
   const pathname = usePathname();
 
   return (
@@ -16,7 +24,7 @@ export default function NavLinks({ className }: { className?: string }) {
           className={`transition-colors duration-300 ${
             isActiveLink(pathname, link.href)
               ? "text-text-warning"
-              : "text-text-light hover:text-text-warning"
+              : `${textColor} hover:text-text-warning`
           } `}
         >
           {link.name}

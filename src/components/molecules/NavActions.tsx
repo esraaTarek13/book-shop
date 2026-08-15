@@ -21,12 +21,14 @@ export default function NavActions({
         count={wishlistCount}
         label="Wishlist"
         href="/wishlist"
+        iconColor="text-text md:text-text-light"
       />
       <IconBadgeLink
         icon={<FiShoppingCart size={20} />}
         count={cartCount}
         label="Cart"
         href="/cart"
+        iconColor="text-text md:text-text-light"
       />
     </div>
   );

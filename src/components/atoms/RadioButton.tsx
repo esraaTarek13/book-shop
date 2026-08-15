@@ -9,16 +9,17 @@ interface RadioButtonProps extends Omit<
 }
 
 const RadioButton = forwardRef<HTMLInputElement, RadioButtonProps>(
-  ({ label, className = "", id, ...rest }, ref) => {
+  ({ label, className = "", id, checked, ...rest }, ref) => {
     return (
       <label
         htmlFor={id}
-        className="flex items-center gap-2 cursor-pointer text-xs md:text-sm text-text"
+        className={`flex items-center justify-center gap-2 cursor-pointer text-xs md:text-sm ${checked ? "text-text-accent" : "text-text"}`}
       >
         <input
           ref={ref}
           type="radio"
           id={id}
+          checked={checked}
           className={`h-3 md:h-4 w-3 md:w-4 accent-primary cursor-pointer ${className}`}
           {...rest}
         />

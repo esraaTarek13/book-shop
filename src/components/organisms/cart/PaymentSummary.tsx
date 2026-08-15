@@ -4,11 +4,19 @@ import StatusMessage from "@/components/atoms/StatusMessage";
 import PromoCodeField from "@/components/organisms/PromoCodeField";
 import SummaryTotals from "@/components/molecules/SummaryTotals";
 import PaymentSummarySkeleton from "@/components/molecules/skeletons/PaymentSummarySkeleton";
-import { useOrderDetails } from "@/hooks/order/useOrderDetails";
+import type { OrderDetailsResponse } from "@/types/order";
 
-export default function PaymentSummary() {
-  const { data: order, isPending, isError } = useOrderDetails();
+interface PaymentSummaryProps {
+  order?: OrderDetailsResponse;
+  isPending: boolean;
+  isError: boolean;
+}
 
+export default function PaymentSummary({
+  order,
+  isPending,
+  isError,
+}: PaymentSummaryProps) {
   if (isPending) return <PaymentSummarySkeleton />;
 
   if (isError)
@@ -48,7 +56,11 @@ export default function PaymentSummary() {
             <LinkButton href="/checkout" className="w-full!">
               Check out
             </LinkButton>
-            <LinkButton href="/books" variant="outline" className="w-full! bg-transparent!">
+            <LinkButton
+              href="/books"
+              variant="outline"
+              className="w-full! bg-transparent!"
+            >
               Keep Shopping
             </LinkButton>
           </div>

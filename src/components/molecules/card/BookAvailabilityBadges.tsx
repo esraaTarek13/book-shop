@@ -4,6 +4,7 @@ import { LuTruck } from "react-icons/lu";
 
 interface BookAvailabilityBadgesProps {
   inStock?: boolean;
+  showStock?: boolean;
   freeShipping?: boolean;
   discountCode?: string;
   className?: string;
@@ -11,20 +12,23 @@ interface BookAvailabilityBadgesProps {
 
 export default function BookAvailabilityBadges({
   inStock,
+  showStock = true,
   freeShipping = false,
   discountCode,
   className = "",
 }: BookAvailabilityBadgesProps) {
   return (
     <div className={`flex flex-wrap items-center gap-2 ${className}`}>
-      <Badge variant={inStock ? "success" : "warning"}>
-        {inStock ? (
-          <IoCheckmarkCircle size={16} />
-        ) : (
-          <IoCloseCircle size={16} />
-        )}
-        {inStock ? "In Stock" : "Out of Stock"}
-      </Badge>
+      {showStock && (
+        <Badge variant={inStock ? "success" : "warning"}>
+          {inStock ? (
+            <IoCheckmarkCircle size={16} />
+          ) : (
+            <IoCloseCircle size={16} />
+          )}
+          {inStock ? "In Stock" : "Out of Stock"}
+        </Badge>
+      )}
 
       {freeShipping && (
         <Badge variant="neutral">

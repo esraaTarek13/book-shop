@@ -10,6 +10,7 @@ interface IconBadgeButtonProps {
   count?: number;
   label: string;
   href: string;
+  iconColor?: string;
 }
 
 export default function IconBadgeLink({
@@ -17,6 +18,7 @@ export default function IconBadgeLink({
   count = 0,
   label,
   href,
+  iconColor = "text-text-light",
 }: IconBadgeButtonProps) {
   const pathname = usePathname();
   const isActive = isActiveLink(pathname, href);
@@ -26,9 +28,7 @@ export default function IconBadgeLink({
       href={href}
       aria-label={label}
       className={`relative transition-colors duration-300 ${
-        isActive
-          ? "text-text-warning"
-          : "text-text-light hover:text-text-warning"
+        isActive ? "text-text-warning" : `${iconColor} hover:text-text-warning`
       }`}
     >
       {icon}

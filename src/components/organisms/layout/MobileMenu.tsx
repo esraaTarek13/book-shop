@@ -35,7 +35,7 @@ export default function MobileMenu({ user }: MobileMenuProps) {
           <DropdownMenu.Content
             align="end"
             sideOffset={8}
-            className="w-56 rounded-md bg-card/80 shadow-lg p-3 flex flex-col gap-2 z-50"
+            className="w-56 rounded-sm bg-surface shadow-lg p-3 flex flex-col gap-2 z-50"
           >
             {!hasHydrated
               ? null
@@ -47,19 +47,20 @@ export default function MobileMenu({ user }: MobileMenuProps) {
                       className="justify-center gap-8"
                     />
 
-                    <DropdownMenu.Separator className="h-px bg-card my-1.5" />
+                    <DropdownMenu.Separator className="h-px bg-card-border my-1.5" />
                   </>
                 )}
 
-            <NavLinks className="flex-col!" />
+            <NavLinks className="flex-col!" textColor="text-text" />
 
-            <DropdownMenu.Separator className="h-px bg-card my-1.5" />
+            <DropdownMenu.Separator className="h-px bg-card-border my-1.5" />
 
             {!hasHydrated ? null : user ? (
               <UserInfo
                 name={user?.name}
                 email={user?.email}
                 avatarSrc={user?.image}
+                color="default"
               />
             ) : (
               <AuthActions />
