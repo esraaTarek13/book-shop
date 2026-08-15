@@ -4,7 +4,6 @@ import { useGetCartData } from "@/hooks/cart/useGetCartData";
 import BackgroundBanner from "../atoms/BackgroundBanner";
 import CartList from "../organisms/cart/CartList";
 import PaymentSummary from "../organisms/cart/PaymentSummary";
-import { useOrderDetails } from "@/hooks/order/useOrderDetails";
 
 export default function CartTemplate() {
   const {
@@ -12,12 +11,6 @@ export default function CartTemplate() {
     isPending: isCartPending,
     isError: isCartError,
   } = useGetCartData();
-
-  const {
-    data: order,
-    isPending: isOrderPending,
-    isError: isOrderError,
-  } = useOrderDetails();
 
   const hasItems = (cartData?.cart.length ?? 0) > 0;
 
@@ -34,9 +27,9 @@ export default function CartTemplate() {
 
         {hasItems && (
           <PaymentSummary
-            order={order}
-            isPending={isOrderPending}
-            isError={isOrderError}
+            subTotal={cartData?.subTotal ?? 0}
+            tax={cartData?.tax ?? 0}
+            total={cartData?.total ?? 0}
           />
         )}
       </div>

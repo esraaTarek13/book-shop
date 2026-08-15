@@ -1,21 +1,21 @@
 import Text from "@/components/atoms/Text";
 import CartCard from "../CartCard";
-import { OrderDetailsResponse } from "@/types/order";
 import SummaryTotals from "@/components/molecules/SummaryTotals";
 import StatusMessage from "@/components/atoms/StatusMessage";
 import OrderSummarySkeleton from "@/components/molecules/skeletons/OrderSummarySkeleton";
 import Button from "@/components/atoms/Button";
+import { CartData } from "@/types/cart";
 
 interface OrderSummaryProps {
-  order?: OrderDetailsResponse;
-  isOrderPending: boolean;
+  cartData?: CartData;
+  isCartPending: boolean;
   isCheckoutPending: boolean;
   isError: boolean;
 }
 
 export default function OrderSummary({
-  order,
-  isOrderPending,
+  cartData,
+  isCartPending,
   isCheckoutPending,
   isError,
 }: OrderSummaryProps) {
@@ -23,7 +23,7 @@ export default function OrderSummary({
     return (
       <StatusMessage variant="error" content="Failed to load order summary." />
     );
-  if (isOrderPending) return <OrderSummarySkeleton />;
+  if (isCartPending) return <OrderSummarySkeleton />;
 
   return (
     <section className="bg-surface rounded-lg p-6 md:p-8 flex flex-col justify-between gap-15">
@@ -31,7 +31,7 @@ export default function OrderSummary({
         <Text as="h2" weight="semibold" size="lg">
           Order summary
         </Text>
-        {order?.books.map((book) => (
+        {cartData?.cart.map((book) => (
           <CartCard
             key={book.bookId}
             book={book}
@@ -43,9 +43,9 @@ export default function OrderSummary({
 
       <div className="space-y-4">
         <SummaryTotals
-          subTotal={order?.subTotal ?? 0}
-          tax={order?.tax ?? 0}
-          total={order?.total ?? 0}
+          subTotal={cartData?.subTotal ?? 0}
+          tax={cartData?.tax ?? 0}
+          total={cartData?.total ?? 0}
         />
         <Button type="submit" isLoading={isCheckoutPending}>
           Confirm order

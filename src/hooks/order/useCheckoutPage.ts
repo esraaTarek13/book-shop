@@ -2,10 +2,10 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useOrderDetails } from "./useOrderDetails";
 import { useCheckout } from "./useCheckout";
 import { checkoutSchema } from "@/validation/checkoutSchema";
 import type { CheckoutValues } from "@/types/order";
+import { useGetCartData } from "../cart/useGetCartData";
 
 const initialValues: CheckoutValues = {
     name: "",
@@ -24,24 +24,24 @@ const initialValues: CheckoutValues = {
 
 export function useCheckoutPage() {
     const router = useRouter();
-    const { data, isPending: isOrderPending, isError } = useOrderDetails();
+    const { data, isPending: isCartPending, isError } = useGetCartData();
     const { mutate, isPending: isCheckoutPending } = useCheckout();
 
-    const hasItems = (data?.books.length ?? 0) > 0;
+    const hasItems = (data?.cart.length ?? 0) > 0;
 
     useEffect(() => {
-        if (!isOrderPending && !hasItems) {
+        if (!isCartPending && !hasItems) {
             router.replace("/books");
         }
-    }, [isOrderPending, hasItems, router]);
+    }, [isCartPending, hasItems, router]);
 
     const handleSubmit = (values: CheckoutValues) => {
         mutate(values);
     };
 
     return {
-        order: data,
-        isOrderPending,
+        cartData: data,
+        isCartPending,
         isCheckoutPending,
         isError,
         hasItems,

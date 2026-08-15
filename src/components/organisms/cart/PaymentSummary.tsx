@@ -1,32 +1,18 @@
 import LinkButton from "@/components/atoms/LinkButton";
 import Text from "@/components/atoms/Text";
-import StatusMessage from "@/components/atoms/StatusMessage";
 import PromoCodeField from "@/components/organisms/PromoCodeField";
 import SummaryTotals from "@/components/molecules/SummaryTotals";
-import PaymentSummarySkeleton from "@/components/molecules/skeletons/PaymentSummarySkeleton";
-import type { OrderDetailsResponse } from "@/types/order";
 
 interface PaymentSummaryProps {
-  order?: OrderDetailsResponse;
-  isPending: boolean;
-  isError: boolean;
+  subTotal: number;
+  tax: number;
+  total: number;
 }
-
 export default function PaymentSummary({
-  order,
-  isPending,
-  isError,
+  subTotal,
+  tax,
+  total,
 }: PaymentSummaryProps) {
-  if (isPending) return <PaymentSummarySkeleton />;
-
-  if (isError)
-    return (
-      <StatusMessage
-        variant="error"
-        content="Failed to load payment summary."
-      />
-    );
-
   return (
     <section className="custom-container bg-card-10 py-6 md:py-10">
       <div className="flex flex-col lg:flex-row gap-8 lg:gap-20">
@@ -46,11 +32,7 @@ export default function PaymentSummary({
         </div>
 
         <div className="flex-1 space-y-6 lg:space-y-8">
-          <SummaryTotals
-            subTotal={order?.subTotal ?? 0}
-            tax={order?.tax ?? 0}
-            total={order?.total ?? 0}
-          />
+          <SummaryTotals subTotal={subTotal} tax={tax} total={total} />
 
           <div className="flex flex-col gap-3">
             <LinkButton href="/checkout" className="w-full!">

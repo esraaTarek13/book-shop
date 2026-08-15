@@ -9,8 +9,8 @@ import { useCheckoutPage } from "@/hooks/order/useCheckoutPage";
 
 export default function CheckoutTemplate() {
   const {
-    order,
-    isOrderPending,
+    cartData,
+    isCartPending,
     isCheckoutPending,
     isError,
     hasItems,
@@ -19,7 +19,7 @@ export default function CheckoutTemplate() {
     handleSubmit,
   } = useCheckoutPage();
 
-  if (!isOrderPending && !hasItems) return null;
+  if (!isCartPending && !hasItems) return null;
 
   return (
     <>
@@ -40,8 +40,8 @@ export default function CheckoutTemplate() {
 
             {hasItems && (
               <OrderSummary
-                order={order}
-                isOrderPending={isOrderPending}
+                cartData={cartData}
+                isCartPending={isCartPending}
                 isCheckoutPending={isCheckoutPending}
                 isError={isError}
               />
