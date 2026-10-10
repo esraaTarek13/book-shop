@@ -3,10 +3,10 @@ import { useDeleteFromCart } from "@/hooks/cart/useDeleteFromCart";
 import { FaTrashAlt } from "react-icons/fa";
 
 interface DeleteButtonProps {
-  cartId: number;
+  bookId: number;
 }
 
-export default function DeleteButton({ cartId }: DeleteButtonProps) {
+export default function DeleteButton({ bookId }: DeleteButtonProps) {
   const { mutate: deleteFromCart, isPending } = useDeleteFromCart();
 
   return (
@@ -14,7 +14,7 @@ export default function DeleteButton({ cartId }: DeleteButtonProps) {
       variant="outline"
       aria-label="Remove from cart"
       disabled={isPending}
-      onClick={() => deleteFromCart(cartId)}
+      onClick={() => deleteFromCart(bookId)}
       icon={<FaTrashAlt />}
       className="py-2 md:py-3"
     />

@@ -1,11 +1,13 @@
 "use client";
 
 import Button from "@/components/atoms/Button";
-import { useCartActions } from "@/hooks/cart/useCartActions";
 import { useRequireAuth } from "@/hooks/useRequireAuth";
 import AuthRequiredModal from "@/components/molecules/AuthRequiredModal";
 import { LuShoppingCart } from "react-icons/lu";
 import { MdOutlineRemoveShoppingCart } from "react-icons/md";
+import { toggleCartStore } from "@/store/toggleCartStore";
+import { useAddToCart } from "@/hooks/cart/useAddToCart";
+import { useDeleteFromCart } from "@/hooks/cart/useDeleteFromCart";
 
 interface AddToCartButtonProps {
   bookId: number;
@@ -19,7 +21,14 @@ export default function AddToCartButton({
   className = "",
 }: AddToCartButtonProps) {
   const { showAuthModal, setShowAuthModal, requireAuth } = useRequireAuth();
-  const { isInCart, toggleCart, isCartPending } = useCartActions({ bookId });
+
+  const isInCart = toggleCartStore((s) => s.ids.includes(bookId));
+  const { mutate: addToCart, isPending: isAdding } = useAddToCart();
+  const { mutate: deleteFromCart, isPending: isRemoving } = useDeleteFromCart();
+
+  const toggleCart = () =>
+    isInCart ? deleteFromCart(bookId) : addToCart({ bookId, qty: 1 });
+
 
   return (
     <>
@@ -28,7 +37,7 @@ export default function AddToCartButton({
         variant="primary"
         aria-label={isInCart ? "Remove from cart" : "Add to cart"}
         size="sm"
-        disabled={isCartPending}
+        disabled={isAdding || isRemoving}
         onClick={() => requireAuth(toggleCart)}
         className={`min-w-fit ${className}`}
       >

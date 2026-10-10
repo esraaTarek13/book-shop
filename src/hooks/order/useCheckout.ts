@@ -17,7 +17,8 @@ export const useCheckout = () => {
             toast.success("Order placed successfully");
             queryClient.invalidateQueries({ queryKey: ["order"] });
             queryClient.invalidateQueries({ queryKey: ["cart"] });
-            router.push("/books");
+            queryClient.invalidateQueries({ queryKey: ["books"] });
+            router.push("/cart");
         },
         onError: (error: AxiosError<ApiErrorResponse>) => {
             const message = error.response?.data?.message || "Failed to place order";

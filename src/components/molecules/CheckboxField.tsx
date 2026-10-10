@@ -25,8 +25,8 @@ export default function CheckboxField({
     <div className={className}>
       <Checkbox label={label} id={name} {...field} />
       <span
-        className={`text-xs md:text-sm text-danger min-h-4 ${
-          hasError ? "visible" : "invisible"
+        className={`text-xs md:text-sm text-danger min-h-4  ${
+          hasError ? " block" : "hidden"
         }`}
         role="alert"
       >

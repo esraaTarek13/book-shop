@@ -85,7 +85,7 @@ export default function CartCard({
           <div className="flex items-center gap-6">
             <Price amount={book.lineTotal} />
 
-            {showDeleteButton && <DeleteButton cartId={book.cartId} />}
+            {showDeleteButton && <DeleteButton bookId={book.cartId} />}
           </div>
         </div>
       </div>

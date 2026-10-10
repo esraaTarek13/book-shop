@@ -31,8 +31,8 @@ export const checkoutSchema = Yup.object().shape({
         .max(255, "Address is too long"),
 
     payment_method: Yup.number()
-        .required("Payment method is required")
-        .oneOf([1, 2, 3], "Select a valid payment method"),
+        .required("Please select a payment method")
+        .oneOf([1, 2, 3], "Please select a payment method"),
 
     government: Yup.string()
         .trim()

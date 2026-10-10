@@ -47,14 +47,14 @@ export default function ProfileForm({ profileData }: ProfileFormProps) {
                 name="first_name"
                 label="First Name"
                 type="text"
-                placeholder="John"
+                placeholder="e.g. John"
                 disabled={!isEditing}
               />
               <FormField
                 name="last_name"
                 label="Last Name"
                 type="text"
-                placeholder="Smith"
+                placeholder="e.g. Smith"
                 disabled={!isEditing}
               />
             </div>
@@ -64,21 +64,21 @@ export default function ProfileForm({ profileData }: ProfileFormProps) {
                 name="email"
                 label="Email"
                 type="email"
-                placeholder="example@gmail.com"
+                placeholder="e.g. example@gmail.com"
                 disabled={!isEditing}
               />
               <FormField
                 name="phone"
                 label="Phone number"
                 type="tel"
-                placeholder="123456789"
+                placeholder="e.g. 01026487587"
                 disabled={!isEditing}
               />
               <FormField
                 name="address"
                 label="Address"
                 type="text"
-                placeholder="Maadi, Cairo, Egypt."
+                placeholder="e.g. Maadi, Cairo, Egypt."
                 disabled={!isEditing}
               />
             </div>

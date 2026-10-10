@@ -1,6 +1,8 @@
 "use client";
 
+import { useEffect } from "react";
 import { useGetCartData } from "@/hooks/cart/useGetCartData";
+import { toggleCartStore } from "@/store/toggleCartStore";
 import BackgroundBanner from "../atoms/BackgroundBanner";
 import CartList from "../organisms/cart/CartList";
 import PaymentSummary from "../organisms/cart/PaymentSummary";
@@ -10,7 +12,12 @@ export default function CartTemplate() {
     data: cartData,
     isPending: isCartPending,
     isError: isCartError,
-  } = useGetCartData();
+  } = useGetCartData({ refetchOnMount: "always" });
+  const setIds = toggleCartStore((s) => s.setIds);
+
+  useEffect(() => {
+    if (cartData) setIds(cartData.cart.map((item) => item.bookId));
+  }, [cartData, setIds]);
 
   const hasItems = (cartData?.cart.length ?? 0) > 0;
 

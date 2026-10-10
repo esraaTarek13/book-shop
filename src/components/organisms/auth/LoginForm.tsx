@@ -33,7 +33,7 @@ export default function LoginForm() {
         </div>
 
         <div className="flex items-center justify-between mt-3 md:mt-4">
-          <CheckboxField name="myCheckbox" label="Remember me" />
+          <CheckboxField name="myCheckbox" label="Remember me"  />
           <TextLink href="/forget-password" className="text-text-accent">
             Forget password?
           </TextLink>

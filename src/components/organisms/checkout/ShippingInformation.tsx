@@ -10,12 +10,12 @@ export default function ShippingInformation() {
 
       <div className="space-y-4 md:space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <FormField name="name" label="Name" placeholder="John Smith" />
+          <FormField name="name" label="Name" placeholder="e.g. John Smith" />
           <FormField
             name="phone"
             label="Phone"
             type="tel"
-            placeholder="123456789"
+            placeholder="e.g. 01026487587"
           />
         </div>
 
@@ -24,22 +24,22 @@ export default function ShippingInformation() {
             name="email"
             label="Email"
             type="email"
-            placeholder="Johnsmith@gmail.com"
+            placeholder="e.g. Johnsmith@gmail.com"
           />
-          <FormField name="city" label="City" placeholder="Maadi" />
+          <FormField name="city" label="City" placeholder="e.g. Maadi" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <FormField name="state" label="State" placeholder="Cairo" />
-          <FormField name="zip" label="Zip" placeholder="11311" />
+          <FormField name="state" label="State" placeholder="e.g. Cairo" />
+          <FormField name="zip" label="Zip" placeholder="e.g. 11311" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <FormField name="government" label="Government" placeholder="Cairo" />
+          <FormField name="government" label="Government" placeholder="e.g. Cairo" />
           <FormField
             name="address"
             label="Address"
-            placeholder="Maadi, Cairo, Egypt."
+            placeholder="e.g. 12 Road 9, Building 4, Apartment 3"
           />
         </div>
       </div>
